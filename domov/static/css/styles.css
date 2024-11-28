@@ -1,0 +1,81 @@
+/* Body and general styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Navbar styles */
+nav {
+    background-color: #ff4081; /* Bright pink background */
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    background-color: #ff80ab; /* Lighter pink for hover */
+    color: #333;
+    transform: scale(1.1);
+}
+
+/* Homepage content styles */
+div {
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    color: #ff4081; /* Bright pink heading */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-out;
+}
+
+/* Adding fun background to the paragraph */
+p {
+    font-size: 1.5em;
+    line-height: 1.8;
+    color: #333;
+    background-color: #ffebee; /* Light pink background */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: bounceIn 1s ease-out;
+}
+
+/* Fun hover effect for content */
+p:hover {
+    background-color: #ff80ab;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    60% { opacity: 1; transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}

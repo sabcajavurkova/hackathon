@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib import messages
 
 from .forms import RegisterUserForm
@@ -14,8 +14,8 @@ def login(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login(request, user)
-            return redirect('index.html')
+            auth_login(request, user)
+            return redirect('/')
         
         return redirect('/prihlaseni')
     else:

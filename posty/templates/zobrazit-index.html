@@ -6,11 +6,30 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="search" name="search_query">
+        <button type="submit">Hledat</button>
+    </form>
+
     {% for report in reports %}
         <p>adresa: {{ report.address }} </p>
         <p>koment: {{ report.text }}</p>
         <p>pridani: {{ report.date }}</p>
+        <p>Libi se {{report.likes}}, nelibi se {{report.dislikes}}</p>
+        <button onclick=like(report.pk)>To se mi libi</button><button onclick=dislike(report.pk)>To se mi nelibi</button>
         <br>
     {% endfor %}
 </body>
+
+<script>
+
+function like(pk){
+}
+
+function dislike(pk){
+    
+}
+
+</script>
 </html>

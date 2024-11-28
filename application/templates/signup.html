@@ -6,11 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Signup</h1>
     <form action="" method="POST" class="signup">
-
-        
-        <button type="submit"></button>
+        {% csrf_token %}
+        <h1>Registrace</h1>
+        <input type="text" placeholder="MAC adresa" class="form-control" name="mac-address">
+        <input type="text" placeholder="Krestni" class="form-control" name="first_name">
+        <input type="text" placeholder="Prijmeni" class="form-control" name="last_name">
+        <input type="text" placeholder="Uživatelské jméno" class="form-control" name="username">
+        <input type="password" placeholder="Heslo" class="form-control" name="password">
+        <button type="submit">Registrace</button>
     </form>
 </body>
 </html>

@@ -8,12 +8,3 @@ class Report(models.Model):
     likes = models.IntegerField(default=0, editable=False)
     dislikes = models.IntegerField(default=0, editable=False)
     
-    @property
-    def number_of_likes(self):
-        return self.likes.count()
-    
-    @property
-    def number_of_dislikes(self):
-        return self.dislikes.count()
-    
-    

@@ -1,1 +1,1 @@
-hackathon majstri
+hackathon majstrii

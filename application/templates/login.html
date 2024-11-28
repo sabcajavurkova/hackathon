@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Přihlášení</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Pokud používáš externí CSS -->
 </head>
 <body>
     <form action="" method="POST" class="login">
         {% csrf_token %}
-        <h1>Prihlaseni</h1>
-        <input type="text" placeholder="Cele jmeno" class="form-control" name="username" aria-describedby="emailHelp">
-        <input type="password" placeholder="Heslo" class="form-control" name="password">
-        <button type="submit" value="PŘIHLÁSIT SE">Přihlásit se</button>
+        <h1>Přihlášení</h1>
+
+        <!-- Input pro uživatelské jméno -->
+        <input type="text" placeholder="Username" class="form-control" name="username" aria-describedby="emailHelp">
+
+        <!-- Input pro heslo -->
+        <input type="password" placeholder="Password" class="form-control" name="password">
+
+        <!-- Tlačítko pro přihlášení, které je deaktivováno, pokud nejsou vyplněna pole -->
+        <button type="submit" value="PŘIHLÁSIT SE" disabled>Přihlásit se</button>
     </form>
+
+    <!-- Připojení JavaScriptu pro validaci a interaktivitu -->
+    <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,163 @@
+/* Body and general styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Navbar styles */
+nav {
+    background-color: #0d0e34; /* Bright pink background */
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    background-color: #6c9ae9; /* Lighter pink for hover */
+    color: #333;
+    transform: scale(1.1);
+}
+
+/* Homepage content styles */
+div {
+    padding: 20px;
+    /*text-align: center;*/
+}
+
+h1 {
+    font-size: 3em;
+    color: #1f105a; /* Bright pink heading */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-out;
+}
+
+/* Adding fun background to the paragraph */
+p {
+    font-size: 1.5em;
+    line-height: 1.8;
+    color: #333;
+    background-color: #b7e1f0; /* Light pink background */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /*animation: bounceIn 1s ease-out;*/
+}
+
+/* Fun hover effect for content 
+p:hover {
+    background-color: #ff80ab;
+    color: white;
+    transform: scale(1.05);
+}
+*/
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    60% { opacity: 1; transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Základní stylování pro celé tělo stránky */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff; /* Světle modré pozadí */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Stylování pro formu přihlášení */
+form.login {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 300px;
+    margin: 50px auto;
+}
+
+/* Nadpis pro přihlášení */
+h1 {
+    text-align: center;
+    color: #1f105a; /* Tmavě růžová (stejně jako v index.html) */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Styl pro inputy - uživatelské jméno a heslo */
+input[type="text"], input[type="password"] {
+    width: 90%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus efekt pro inputy */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #6c9ae9; /* Světle růžová (stejně jako hover v index.html) */
+    outline: none;
+}
+
+/* Styl pro tlačítko Přihlásit se */
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #0d0e34; /* Tmavě modrá */
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover efekt pro tlačítko */
+button:hover {
+    background-color: #6c9ae9; /* Světle růžová pro hover */
+    transform: scale(1.05);
+}
+
+/* Deaktivované tlačítko (když nejsou vyplněna pole) */
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Chybové hlášky nebo pomocný text (pokud je potřeba) */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 10px;
+}
+

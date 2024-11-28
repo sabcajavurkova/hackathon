@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Zde se budou zobrazovat urls</h1>
+    {% for report in reports %}
+        <p>adresa: {{ report.address }} </p>
+        <p>koment: {{ report.text }}</p>
+        <p>pridani: {{ report.date }}</p>
+        <br>
+    {% endfor %}
 </body>
 </html>

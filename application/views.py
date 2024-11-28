@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
+from .forms import RegisterUserForm
+
 def index(request):
     return render(request, 'index.html')
 
@@ -15,8 +17,7 @@ def login(request):
             login(request, user)
             return redirect('index.html')
         
-        messages.success(request, 'Chyba pri prihlasovani')
-        return redirect('login.html')
+        return redirect('/prihlaseni')
     else:
         return render(request, 'login.html')
 

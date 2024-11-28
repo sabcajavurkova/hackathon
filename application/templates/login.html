@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <form action="" method="POST" class="login">
+        {% csrf_token %}
+        <h1>Prihlaseni</h1>
+        <input type="text" placeholder="Uživatelské jméno" class="form-control" name="username" aria-describedby="emailHelp">
+        <input type="password" placeholder="Heslo" class="form-control" name="password">
+        <button type="submit" value="PŘIHLÁSIT SE">Přihlásit se</button>
+        <a href="/" class="btn btn-link" style="color: #ffffff;">Zpatky</a>
+    </form>
 </body>
 </html>

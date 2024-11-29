@@ -161,3 +161,49 @@ button:disabled {
     margin-top: 10px;
 }
 
+/* Styl pro vycentrování obsahu */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Výška obrazovky */
+    background-color: #f0f8ff; /* Světle modré pozadí */
+}
+
+/* Čtverec s textem a tlačítkem */
+.auth-box {
+    background-color: rgb(29, 23, 73);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Šířka čtverce */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Nadpis ve čtverci */
+.auth-box h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+/* Tlačítko pro přihlášení */
+.auth-box .btn-login {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1em;
+    background-color: #0d0e34;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hover efekt pro tlačítko */
+.auth-box .btn-login:hover {
+    background-color: #6c9ae9;
+    transform: scale(1.05);
+}
+
+
+

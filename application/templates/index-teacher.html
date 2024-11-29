@@ -16,8 +16,12 @@
         <p><a href="/pridat-lekci" class="btn btn-success">Pridat lekci</a></p>
         <p><a href="/odhlaseni" class="btn btn-danger">odhlaseni</a></p>
     {% else %}
-        <p>Nejste prihlasen: <a href="/prihlaseni">LOGIN</a></p>
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>Nejste přihlášeni</h2>
+            <a href="/prihlaseni" class="btn btn-primary btn-login">Přihlásit se</a>
+        </div>
+    </div>
     {% endif %}
-
 </body>
 </html>

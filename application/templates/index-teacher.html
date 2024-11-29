@@ -10,6 +10,7 @@
         {% for lecture in lectures %}
             <p><a href="{% url 'list_lecture' lecture.pk %}">{{lecture.name}}</a></p>
         {% endfor %}
+        <p><a href="/odhlaseni">odhlaseni</a></p>
     {% else %}
         <p>Nejste prihlasen: <a href="/prihlaseni">LOGIN</a></p>
     {% endif %}

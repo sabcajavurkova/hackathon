@@ -7,5 +7,9 @@
 </head>
 <body>
     <p>Jste prihlasen</p>
+    {% if user.is_superuser %}
+        <p><a href="/admin">ADMIN stranka</a></p>
+    {% endif %}
+    <p><a href="/odhlaseni">odhlaseni</a></p>
 </body>
 </html>

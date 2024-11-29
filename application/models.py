@@ -39,7 +39,7 @@ class Teacher(models.Model):
    
     
 class Lecture(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     students = models.ManyToManyField(Student, related_name='students')
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='teacher')
     

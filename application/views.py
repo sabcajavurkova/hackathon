@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Student
+from .serializers import StudentSerializer
 
 from .forms import RegisterUserForm
 from .models import Student, Teacher, Lecture
@@ -55,3 +60,26 @@ def signup(request):
     else:
         form = RegisterUserForm()
     return render(request, 'signup.html', {'form': form})
+
+class BluetoothDataView(APIView):
+    def post(self, request, *args, **kwargs):
+        # Получаем MAC-адрес из запроса
+        mac_address = request.data.get('address')
+
+        if not mac_address:
+            return Response({"error": "MAC address is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            # Ищем студента с таким MAC-адресом
+            student = Student.objects.get(mac_address=mac_address)
+            serializer = StudentSerializer(student, data=request.data, partial=True)
+
+            if serializer.is_valid():
+                # Обновляем информацию
+                serializer.save()
+                return Response({"message": f"Student {student.first_name} {student.last_name} is now in school."}, status=status.HTTP_200_OK)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        except Student.DoesNotExist:
+            return Response({"message": "MAC address not found in the database."}, status=status.HTTP_404_NOT_FOUND)

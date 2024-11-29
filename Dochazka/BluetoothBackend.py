@@ -34,9 +34,6 @@ def scan_bluetooth_devices():
         else:
             print("No devices found.")
 
-        # Wait for 10 seconds before scanning again
-        time.sleep(10)
-
 # Run the Bluetooth scanning function
 if __name__ == "__main__":
     scan_bluetooth_devices()

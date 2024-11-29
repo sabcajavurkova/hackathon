@@ -39,7 +39,8 @@ def login(request):
         if user:
             auth_login(request, user)
             return redirect('/')
-        print('tady')
+        
+        messages.success(request, 'Pri prihlasovani nastala chyba')
         return redirect('/prihlaseni')
     else:
         return render(request, 'login.html')

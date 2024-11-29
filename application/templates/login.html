@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Pokud používáš externí CSS -->
 </head>
 <body>
+
+    <div class="container" name="messages">
+        {% if messages %}
+          {% for msg in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{msg}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
     <form action="" method="POST" class="login">
         {% csrf_token %}
         <h1>Přihlášení</h1>

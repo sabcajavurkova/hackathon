@@ -83,3 +83,8 @@ class BluetoothDataView(APIView):
 
         except Student.DoesNotExist:
             return Response({"message": "MAC address not found in the database."}, status=status.HTTP_404_NOT_FOUND)
+        
+def list_lecture(request, pk):
+    lecture = Lecture.objects.get(pk=pk)
+    students = lecture.students.all()
+    return render(request, 'list_lecture.html', {'lecture': lecture, 'students': students})

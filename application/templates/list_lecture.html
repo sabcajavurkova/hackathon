@@ -6,8 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    {% for lecture in lectures %}
-    <p><a href="{% url 'list_lecture' lecture.pk %}">{{lecture.name}}</a></p>
+    <h1>{{lecture.name}}</h1>
+    {% for student in students %}
+        <p>{{student.first_name}} {{student.last_name}}</p>
     {% endfor %}
 </body>
 </html>

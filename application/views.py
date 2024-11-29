@@ -7,9 +7,12 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Student
 from .serializers import StudentSerializer
-
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
 from .forms import RegisterUserForm, AddLectureForm
 from .models import Student, Teacher, Lecture
+from datetime import datetime, timedelta
 
 def index(request):
     return render(request, 'index.html')
@@ -72,28 +75,58 @@ def signup(request):
         form = RegisterUserForm()
     return render(request, 'signup.html', {'form': form})
 
+
+
+last_status_change = {}
+
+
 class BluetoothDataView(APIView):
     def post(self, request, *args, **kwargs):
-        # Получаем MAC-адрес из запроса
         mac_address = request.data.get('address')
+        device = request.data.get('device')
 
         if not mac_address:
             return Response({"error": "MAC address is required"}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
-            # Ищем студента с таким MAC-адресом
             student = Student.objects.get(mac_address=mac_address)
-            serializer = StudentSerializer(student, data=request.data, partial=True)
-
-            if serializer.is_valid():
-                # Обновляем информацию
-                serializer.save()
-                return Response({"message": f"Student {student.first_name} {student.last_name} is now in school."}, status=status.HTTP_200_OK)
-            else:
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
         except Student.DoesNotExist:
-            return Response({"message": "MAC address not found in the database."}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        # Logika pro master_node (škola)
+        if device == 'master_node':
+            if student.is_in_school:
+                student.is_in_school = False
+                student.is_present = False  # Reset is_present pokud opustil školu
+            else:
+                student.is_in_school = True  # Student přichází do školy
+            student.save()
+
+            return Response({
+                "message": f"Student {student.first_name} {student.last_name} has {'entered' if student.is_in_school else 'left'} the school.",
+                "is_in_school": student.is_in_school,
+                "is_present": student.is_present
+            }, status=status.HTTP_200_OK)
+
+        # Logika pro slave_node (třída)
+        elif device == 'slave_node':
+            if not student.is_present:
+                student.is_present = True  # Student vstoupil do třídy, takže změna na True
+            else:
+                student.is_present = False  # Student opustil třídu, změna na False
+            student.save()
+
+            return Response({
+                "message": f"Student {student.first_name} {student.last_name} has {'entered' if student.is_present else 'left'} the classroom.",
+                "is_in_school": student.is_in_school,
+                "is_present": student.is_present
+            }, status=status.HTTP_200_OK)
+
+        return Response({"error": "Invalid device type."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+        
+    
         
 def list_lecture(request, pk):
     lecture = Lecture.objects.get(pk=pk)

@@ -23,7 +23,7 @@ class RegisterUserForm(forms.Form):
     
     
 class AddLectureForm(forms.Form):
-    students = Student.objects.all()
+    """students = Student.objects.all()
     stud_CHOICES = []
     for student in students:
         stud_CHOICES.append((student, student))
@@ -48,7 +48,7 @@ class AddLectureForm(forms.Form):
         choices=CHOICES,
         widget=forms.Select,
         required=True,
-    )
+    )"""
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -3,7 +3,7 @@ import requests
 import time
 
 # URL of the Flask backend
-API_URL = "http://127.0.0.1:5000/bluetooth"  # Backend URL on localhost
+API_URL = "http://10.10.8.70:5000/bluetooth"  
 device="device#"
 def scan_bluetooth_devices():
     print("Starting Bluetooth scan...")

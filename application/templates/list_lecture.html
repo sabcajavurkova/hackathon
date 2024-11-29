@@ -3,14 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{lecture.name}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #aecfff;
+        }
+        h1 {
+            text-align: center;
+            color: #120f0f;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+        .btn {
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>{{lecture.name}}</h1>
-    {% for student in students %}
-        <p>{{student.first_name}} {{student.last_name}} - {{student.is_present}}</p>
-    {% endfor %}
-    <p><a href="{% url 'remove_lecture' lecture.pk %}" onclick="return confirm('Are you sure you want to delete this?')">SMAZAT</a></p>
-    <p><a href="/">zpet</a></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>In School</th>
+                <th>Present</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{student.first_name}}</td>
+                    <td>{{student.last_name}}</td>
+                    <td>{{student.is_in_school}}</td>
+                    <td>{{student.is_present}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <p>
+            <a href="{% url 'remove_lecture' lecture.pk %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Smazat</a>
+        </p>
+        <p>
+            <a href="/" class="btn">Zpět</a>
+        </p>
+    </div>
 </body>
 </html>

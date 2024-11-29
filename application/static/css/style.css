@@ -181,10 +181,10 @@ button:disabled {
 }
 
 /* Nadpis ve čtverci */
-.auth-box h2 {
+h2 {
     margin-bottom: 20px;
     font-size: 1.5em;
-    color: #333;
+    color: #ffffff !important;
 }
 
 /* Tlačítko pro přihlášení */

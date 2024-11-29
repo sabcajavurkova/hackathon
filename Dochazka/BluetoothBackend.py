@@ -4,7 +4,7 @@ import time
 
 # URL of the Flask backend
 API_URL = "http://127.0.0.1:5000/bluetooth"  # Backend URL on localhost
-
+device="device#"
 def scan_bluetooth_devices():
     print("Starting Bluetooth scan...")
 
@@ -17,7 +17,7 @@ def scan_bluetooth_devices():
                 print(f"Device Address: {addr}, Device Name: {name}")
 
                 # Prepare the data to send to the Flask backend
-                data = {"address": addr}
+                data = {"address": addr, "device": dev}
 
                 # Send data to the backend using POST
                 try:

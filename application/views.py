@@ -8,7 +8,7 @@ from rest_framework import status
 from .models import Student
 from .serializers import StudentSerializer
 
-from .forms import RegisterUserForm
+from .forms import RegisterUserForm, AddLectureForm
 from .models import Student, Teacher, Lecture
 
 def index(request):
@@ -50,7 +50,7 @@ def signup(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             role = form.cleaned_data['role']
-            username = form.cleaned_data['username']
+            username = form.cleaned_data['username'].lower()
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             mac_address = form.cleaned_data['mac_address']
@@ -102,4 +102,26 @@ def list_lecture(request, pk):
 
 def logout_user(request):
     logout(request)
+    return redirect('/')
+
+def add_lecture(request):
+    if request.method == 'POST':
+        form = AddLectureForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            students = form.cleaned_data['students']
+            teacher_id = form.cleaned_data['teacher']
+            
+            teacher = Teacher.objects.get(id=teacher_id)
+            
+            lecture = Lecture.objects.create(name=name, teacher=teacher)
+            lecture.students.set(students)
+            return redirect('/')
+    else:
+        form = AddLectureForm()
+    return render(request, 'add_lecture.html', {'form': form})
+
+def remove_lecture(request, pk):
+    lecture = Lecture.objects.get(pk=pk)
+    lecture.delete()
     return redirect('/')

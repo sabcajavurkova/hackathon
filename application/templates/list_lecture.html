@@ -10,6 +10,7 @@
     {% for student in students %}
         <p>{{student.first_name}} {{student.last_name}} - {{student.is_present}}</p>
     {% endfor %}
+    <p><a href="{% url 'remove_lecture' lecture.pk %}" onclick="return confirm('Are you sure you want to delete this?')">SMAZAT</a></p>
     <p><a href="/">zpet</a></p>
 </body>
 </html>

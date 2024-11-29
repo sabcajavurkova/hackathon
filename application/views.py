@@ -4,10 +4,16 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 from .forms import RegisterUserForm
-from .models import Student, Teacher
+from .models import Student, Teacher, Lecture
 
 def index(request):
     return render(request, 'index.html')
+
+def index_teacher(request):
+    teacher = request.user.teacher_profile
+    lectures = Lecture.objects.filter(teacher=teacher)
+    
+    return render(request, 'index-teacher.html', {'lectures': lectures})
 
 def login(request):
     if request.method == 'POST':
@@ -15,10 +21,10 @@ def login(request):
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
+        if user:
             auth_login(request, user)
             return redirect('/')
-        
+        print('tady')
         return redirect('/prihlaseni')
     else:
         return render(request, 'login.html')

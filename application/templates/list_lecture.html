@@ -8,7 +8,7 @@
 <body>
     <h1>{{lecture.name}}</h1>
     {% for student in students %}
-        <p>{{student.first_name}} {{student.last_name}}</p>
+        <p>{{student.first_name}} {{student.last_name}} - {{student.is_present}}</p>
     {% endfor %}
 </body>
 </html>

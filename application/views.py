@@ -15,10 +15,18 @@ def index(request):
     return render(request, 'index.html')
 
 def index_teacher(request):
-    teacher = request.user.teacher_profile
-    lectures = Lecture.objects.filter(teacher=teacher)
+    user = request.user
+    if hasattr(user, 'student_profile') and user:
+        return render(request, 'index-student.html')
     
-    return render(request, 'index-teacher.html', {'lectures': lectures})
+    context = {}
+    if hasattr(user, 'teacher_profile'):
+        teacher = user.teacher_profile
+        lectures = Lecture.objects.filter(teacher=teacher)
+        context ={'lectures': lectures}
+        
+    
+    return render(request, 'index-teacher.html', context)
 
 def login(request):
     if request.method == 'POST':

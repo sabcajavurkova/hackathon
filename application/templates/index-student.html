@@ -9,7 +9,13 @@
     <p>Jste prihlasen</p>
     {% if user.is_superuser %}
         <p><a href="/admin">ADMIN stranka</a></p>
+        <br>
+    {% else %}
+        {% for lecture in lectures %}
+            <p>{{lecture.name}}</p>
+        {% endfor %}
     {% endif %}
+
     <p><a href="/odhlaseni">odhlaseni</a></p>
 </body>
 </html>

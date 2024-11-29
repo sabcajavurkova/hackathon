@@ -17,7 +17,9 @@ def index(request):
 def index_teacher(request):
     user = request.user
     if hasattr(user, 'student_profile') and user:
-        return render(request, 'index-student.html')
+        student = user.student_profile
+        lectures = Lecture.objects.filter(students=student)
+        return render(request, 'index-student.html', {'lectures': lectures})
     
     context = {}
     if hasattr(user, 'teacher_profile'):

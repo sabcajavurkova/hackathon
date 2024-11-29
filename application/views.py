@@ -96,3 +96,7 @@ def list_lecture(request, pk):
     lecture = Lecture.objects.get(pk=pk)
     students = lecture.students.all()
     return render(request, 'list_lecture.html', {'lecture': lecture, 'students': students})
+
+def logout_user(request):
+    logout(request)
+    return redirect('/')
